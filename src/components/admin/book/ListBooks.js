@@ -1,11 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import "./ListBooks.css";
-<Link to="/bookEdit">
-  <button data-toggle="tooltip" title="Edit" class="pd-setting-ed">
-    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-  </button>
-</Link>;
+
 class ListBooks extends Component {
   render() {
     return (
@@ -53,7 +49,7 @@ class ListBooks extends Component {
                   <td>Anhr 01</td>
                   <td>Lịch sử loài người </td>
                   <td>
-                    <button class="pd-setting">Active</button>
+                    <button className="pd-setting">Active</button>
                   </td>
                   <th>15</th>
                   <td>Kiến thức chung</td>
@@ -64,17 +60,20 @@ class ListBooks extends Component {
                       <button
                         data-toggle="tooltip"
                         title="Edit"
-                        class="pd-setting-ed"
+                        className="pd-setting-ed"
                       >
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i
+                          className="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                        ></i>
                       </button>
                     </Link>
                     <button
                       data-toggle="tooltip"
                       title="Trash"
-                      class="pd-setting-ed"
+                      className="pd-setting-ed"
                     >
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <i className="fa fa-trash-o" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>
@@ -83,7 +82,7 @@ class ListBooks extends Component {
                   <td>Anhr 01</td>
                   <td>Lịch sử loài người </td>
                   <td>
-                    <button class="pd-setting">Active</button>
+                    <button className="pd-setting">Active</button>
                   </td>
                   <th>15</th>
                   <td>Kiến thức chung</td>
@@ -94,17 +93,20 @@ class ListBooks extends Component {
                       <button
                         data-toggle="tooltip"
                         title="Edit"
-                        class="pd-setting-ed"
+                        className="pd-setting-ed"
                       >
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i
+                          className="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                        ></i>
                       </button>
                     </Link>
                     <button
                       data-toggle="tooltip"
                       title="Trash"
-                      class="pd-setting-ed"
+                      className="pd-setting-ed"
                     >
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <i className="fa fa-trash-o" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>
@@ -113,7 +115,7 @@ class ListBooks extends Component {
                   <td>Anhr 01</td>
                   <td>Lịch sử loài người </td>
                   <td>
-                    <button class="pd-setting">Active</button>
+                    <button className="pd-setting">Active</button>
                   </td>
                   <th>15</th>
                   <td>Kiến thức chung</td>
@@ -124,17 +126,20 @@ class ListBooks extends Component {
                       <button
                         data-toggle="tooltip"
                         title="Edit"
-                        class="pd-setting-ed"
+                        className="pd-setting-ed"
                       >
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i
+                          className="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                        ></i>
                       </button>
                     </Link>
                     <button
                       data-toggle="tooltip"
                       title="Trash"
-                      class="pd-setting-ed"
+                      className="pd-setting-ed"
                     >
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <i className="fa fa-trash-o" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>
@@ -143,7 +148,7 @@ class ListBooks extends Component {
                   <td>Anhr 01</td>
                   <td>Lịch sử loài người </td>
                   <td>
-                    <button class="pd-setting">Active</button>
+                    <button className="pd-setting">Active</button>
                   </td>
                   <th>15</th>
                   <td>Kiến thức chung</td>
@@ -154,17 +159,20 @@ class ListBooks extends Component {
                       <button
                         data-toggle="tooltip"
                         title="Edit"
-                        class="pd-setting-ed"
+                        className="pd-setting-ed"
                       >
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i
+                          className="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                        ></i>
                       </button>
                     </Link>
                     <button
                       data-toggle="tooltip"
                       title="Trash"
-                      class="pd-setting-ed"
+                      className="pd-setting-ed"
                     >
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <i className="fa fa-trash-o" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>
@@ -173,7 +181,7 @@ class ListBooks extends Component {
                   <td>Anhr 01</td>
                   <td>Lịch sử loài người </td>
                   <td>
-                    <button class="pd-setting">Active</button>
+                    <button className="pd-setting">Active</button>
                   </td>
                   <th>15</th>
                   <td>Kiến thức chung</td>
@@ -184,17 +192,20 @@ class ListBooks extends Component {
                       <button
                         data-toggle="tooltip"
                         title="Edit"
-                        class="pd-setting-ed"
+                        className="pd-setting-ed"
                       >
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i
+                          className="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                        ></i>
                       </button>
                     </Link>
                     <button
                       data-toggle="tooltip"
                       title="Trash"
-                      class="pd-setting-ed"
+                      className="pd-setting-ed"
                     >
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <i className="fa fa-trash-o" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>
@@ -203,7 +214,7 @@ class ListBooks extends Component {
                   <td>Anhr 01</td>
                   <td>Lịch sử loài người </td>
                   <td>
-                    <button class="pd-setting">Active</button>
+                    <button className="pd-setting">Active</button>
                   </td>
                   <th>15</th>
                   <td>Kiến thức chung</td>
@@ -214,17 +225,20 @@ class ListBooks extends Component {
                       <button
                         data-toggle="tooltip"
                         title="Edit"
-                        class="pd-setting-ed"
+                        className="pd-setting-ed"
                       >
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i
+                          className="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                        ></i>
                       </button>
                     </Link>
                     <button
                       data-toggle="tooltip"
                       title="Trash"
-                      class="pd-setting-ed"
+                      className="pd-setting-ed"
                     >
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <i className="fa fa-trash-o" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>
@@ -233,7 +247,7 @@ class ListBooks extends Component {
                   <td>Anhr 01</td>
                   <td>Lịch sử loài người </td>
                   <td>
-                    <button class="pd-setting">Active</button>
+                    <button className="pd-setting">Active</button>
                   </td>
                   <th>15</th>
                   <td>Kiến thức chung</td>
@@ -244,17 +258,20 @@ class ListBooks extends Component {
                       <button
                         data-toggle="tooltip"
                         title="Edit"
-                        class="pd-setting-ed"
+                        className="pd-setting-ed"
                       >
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i
+                          className="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                        ></i>
                       </button>
                     </Link>
                     <button
                       data-toggle="tooltip"
                       title="Trash"
-                      class="pd-setting-ed"
+                      className="pd-setting-ed"
                     >
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <i className="fa fa-trash-o" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>
@@ -263,7 +280,7 @@ class ListBooks extends Component {
                   <td>Anhr 01</td>
                   <td>Lịch sử loài người </td>
                   <td>
-                    <button class="pd-setting">Active</button>
+                    <button className="pd-setting">Active</button>
                   </td>
                   <th>15</th>
                   <td>Kiến thức chung</td>
@@ -274,17 +291,20 @@ class ListBooks extends Component {
                       <button
                         data-toggle="tooltip"
                         title="Edit"
-                        class="pd-setting-ed"
+                        className="pd-setting-ed"
                       >
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i
+                          className="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                        ></i>
                       </button>
                     </Link>
                     <button
                       data-toggle="tooltip"
                       title="Trash"
-                      class="pd-setting-ed"
+                      className="pd-setting-ed"
                     >
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <i className="fa fa-trash-o" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>
@@ -293,7 +313,7 @@ class ListBooks extends Component {
                   <td>Anhr 01</td>
                   <td>Lịch sử loài người </td>
                   <td>
-                    <button class="pd-setting">Active</button>
+                    <button className="pd-setting">Active</button>
                   </td>
                   <th>15</th>
                   <td>Kiến thức chung</td>
@@ -304,17 +324,20 @@ class ListBooks extends Component {
                       <button
                         data-toggle="tooltip"
                         title="Edit"
-                        class="pd-setting-ed"
+                        className="pd-setting-ed"
                       >
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        <i
+                          className="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                        ></i>
                       </button>
                     </Link>
                     <button
                       data-toggle="tooltip"
                       title="Trash"
-                      class="pd-setting-ed"
+                      className="pd-setting-ed"
                     >
-                      <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      <i className="fa fa-trash-o" aria-hidden="true"></i>
                     </button>
                   </td>
                 </tr>
