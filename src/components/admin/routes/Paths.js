@@ -3,7 +3,7 @@ const Paths = {
   Login: "/login",
   Books: "/books",
   BookDetail: "/bookDetail",
-  BookEdit: "/bookEdit",
+  BookEdit: "/book-edit",
   BookAdd: "/addBook",
   Users: "/users",
   UserDetail: "/userDetail",

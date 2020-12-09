@@ -19,7 +19,6 @@ class AppAdmin extends Component {
       .then((res) => res.json())
       .then(
         (result) => {
-          console.log("Case 1 : ", result);
           this.setState({
             // isLoaded: true,
             // items: result.items,
@@ -35,7 +34,6 @@ class AppAdmin extends Component {
   }
 
   render() {
-    console.log("Case 1 Neqwwwwwwwwwwwwwwww");
     return (
       <Router>
         <section id="container">

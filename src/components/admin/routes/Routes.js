@@ -7,6 +7,7 @@ import AddBook from "../book/AddBook";
 import DetailUser from "../user/DetailUser";
 import EditUser from "../user/EditUser";
 import ListUsers from "../user/ListUsers";
+import AddUser from "../user/AddUser";
 
 const routes = [
   {
@@ -27,11 +28,11 @@ const routes = [
     main: () => <DetailBook></DetailBook>,
   },
   {
-    path: "/bookEdit",
-    main: () => <EditBook></EditBook>,
+    path: "/book-edit/:id",
+    main: (props) => <EditBook {...props} />,
   },
   {
-    path: "/bookAdd",
+    path: "/book-add",
     main: () => <AddBook></AddBook>,
   },
   {
@@ -44,8 +45,12 @@ const routes = [
   },
 
   {
-    path: Paths.UserEdit,
+    path: "/user-edit/:id",
     main: () => <EditUser></EditUser>,
+  },
+  {
+    path: "/add-user",
+    main: () => <AddUser></AddUser>,
   },
 ];
 

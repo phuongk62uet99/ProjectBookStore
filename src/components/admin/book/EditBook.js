@@ -1,24 +1,181 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import FetchHelper from "../common/fetch-helper";
+import Categories from "./Categories";
 
 class EditBook extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {},
+      page_size: 0,
+      categories: {},
+      author: "",
+      category_ids: [],
+      code: "",
+      images: [],
+      name: "",
+      price: 0,
+      quantity: 0,
+      status: true,
+    };
+  }
+  // https://topdev.vn/blog/lam-sao-de-fetch-du-lieu-bang-react-hook/
+  // Foreach loop in return statement of react
+
+  // const { register, handleSubmit, watch, errors } = useForm();
+  // const [data, setData] = useState({});
+  // const [page_size, setPage_size] = useState({});
+  // const [categories, setCategories] = useState({});
+
+  // var dataFrom = {
+  //   author: "",
+  //   category_ids: [],
+  //   code: "123",
+  //   images: [],
+  //   name: "",
+  //   price: 0,
+  //   quantity: 0,
+  //   status: true,
+  // };
+  componentDidMount() {
+    var { page_size } = this.state;
+    FetchHelper.fetchData({
+      url: "http://localhost:1234/api/v1/book/categories/",
+      method: "GET",
+      // params: dataFrom,
+    }).then(
+      (jsonData) => {
+        this.setState({
+          categories: jsonData.Category,
+        });
+      },
+      (err) => {
+        console.log("Err : ", err);
+      }
+    );
+  }
+
+  // const onSubmit = (data) => {
+  //   dataFrom.author = data.author;
+  //   dataFrom.category_ids.push(data.category_ids);
+  //   dataFrom.images.push(data.images);
+  //   dataFrom.name = data.name;
+  //   dataFrom.price = data.price;
+  //   dataFrom.quantity = data.quantity;
+  //   var status = data.status === "true" ? true : false;
+  //   dataFrom.status = status;
+
+  //   FetchHelper.fetchData({
+  //     url: "http://localhost:1234/api/v1/book/books/",
+  //     method: "POST",
+  //     params: dataFrom,
+  //   }).then(
+  //     (jsonData) => {
+  //       console.log("response add book : ", jsonData);
+  //     },
+  //     (err) => {
+  //       console.log("Err : ", err);
+  //     }
+  //   );
+  // };
+
+  onChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  handleSubmit = (event) => {
+    var {
+      author,
+      category_ids,
+      code,
+      images,
+      name,
+      price,
+      quantity,
+      status,
+    } = this.state;
+    var dataFrom = {
+      author: "",
+      category_ids: [],
+      code: "123-check",
+      images: [],
+      name: "",
+      price: 0,
+      quantity: 0,
+      status: true,
+    };
+
+    dataFrom.author = author;
+    dataFrom.category_ids.push(category_ids);
+    // dataFrom.code = code;
+    dataFrom.images.push(images);
+    dataFrom.name = name;
+    dataFrom.price = price;
+    dataFrom.quantity = quantity;
+    var statusFrom = status === "true" ? true : false;
+    dataFrom.status = statusFrom;
+    console.log("Data 2 : ", dataFrom);
+    FetchHelper.fetchData({
+      url: "http://localhost:1234/api/v1/book/books/",
+      method: "POST",
+      params: dataFrom,
+    }).then(
+      (jsonData) => {
+        console.log("response add book : ", jsonData);
+      },
+      (err) => {
+        console.log("Err : ", err);
+      }
+    );
+    event.preventDefault();
+  };
+
   render() {
+    var {
+      author,
+      category_ids,
+      code,
+      images,
+      name,
+      price,
+      quantity,
+      status,
+      categories,
+    } = this.state;
+    console.log("====================================");
+    console.log("Categorys : ", categories);
+    // var book = books.map((book, index) => {
+    //   return (
+    //     <Book
+    //       key={index}
+    //       index={index}
+    //       book={book}
+    //       apiUpdateData={this.apiUpdateData}
+    //     />
+    //   );
+    // });
+    console.log("====================================");
+    console.log("Props ID : ", this.props.match.params.id);
+    console.log("====================================");
+    if (categories.length > 0) {
+      var cate = categories.map((cate, index) => {
+        return <Categories key={index} index={index} cate={cate} />;
+      });
+    }
+
     return (
       <div className="form-w3layouts">
         <div className="row">
           <div className="col-lg-12">
             <section className="panel">
-              <header className="panel-heading">
-                Sửa thông tin của sách AAAAAA
-              </header>
+              <header className="panel-heading">Thêm sách mới</header>
               <div className="panel-body">
                 <div className="form">
                   <form
                     className="cmxform form-horizontal "
-                    id="signupForm"
-                    method="get"
-                    action
-                    noValidate="novalidate"
+                    onSubmit={this.handleSubmit}
                   >
                     <div className="form-group ">
                       <label
@@ -31,8 +188,28 @@ class EditBook extends Component {
                         <input
                           className=" form-control"
                           id="firstname"
-                          name="firstname"
+                          name="name"
                           type="text"
+                          onChange={this.onChange}
+                          value={name}
+                        />
+                      </div>
+                    </div>
+                    <div className="form-group ">
+                      <label
+                        htmlFor="firstname"
+                        className="control-label col-lg-3"
+                      >
+                        Tác giả
+                      </label>
+                      <div className="col-lg-6">
+                        <input
+                          className=" form-control"
+                          id="firstname"
+                          name="author"
+                          type="text"
+                          onChange={this.onChange}
+                          value={author}
                         />
                       </div>
                     </div>
@@ -44,12 +221,15 @@ class EditBook extends Component {
                         Loại sách
                       </label>
                       <div className="col-lg-6">
-                        <input
-                          className=" form-control"
-                          id="lastname"
-                          name="lastname"
-                          type="text"
-                        />
+                        <select
+                          className="form-control "
+                          name="category_ids"
+                          form="carform"
+                          onChange={this.onChange}
+                          value={category_ids}
+                        >
+                          {cate}
+                        </select>
                       </div>
                     </div>
                     <div className="form-group ">
@@ -63,8 +243,10 @@ class EditBook extends Component {
                         <input
                           className="form-control "
                           id="username"
-                          name="username"
+                          name="quantity"
                           type="text"
+                          onChange={this.onChange}
+                          value={quantity}
                         />
                       </div>
                     </div>
@@ -79,8 +261,10 @@ class EditBook extends Component {
                         <input
                           className="form-control "
                           id="password"
-                          name="password"
-                          type="password"
+                          name="images"
+                          type="text"
+                          onChange={this.onChange}
+                          value={images}
                         />
                       </div>
                     </div>
@@ -89,38 +273,46 @@ class EditBook extends Component {
                         htmlFor="confirm_password"
                         className="control-label col-lg-3"
                       >
-                        Giá nhập
+                        Giá
                       </label>
                       <div className="col-lg-6">
                         <input
                           className="form-control "
                           id="confirm_password"
-                          name="confirm_password"
-                          type="password"
+                          name="price"
+                          type="text"
+                          onChange={this.onChange}
+                          value={price}
                         />
                       </div>
                     </div>
                     <div className="form-group ">
-                      <label htmlFor="email" className="control-label col-lg-3">
-                        Giá bán
+                      <label
+                        htmlFor="confirm_password"
+                        className="control-label col-lg-3"
+                      >
+                        Trạng thái
                       </label>
                       <div className="col-lg-6">
-                        <input
+                        <select
                           className="form-control "
-                          id="email"
-                          name="email"
-                          type="email"
-                        />
+                          name="status"
+                          form="carform"
+                          onChange={this.onChange}
+                          value={status}
+                        >
+                          <option value="true">Còn sách</option>
+                          <option value="false">Hết sách </option>
+                        </select>
                       </div>
                     </div>
-
                     <div className="form-group">
                       <div className="col-lg-offset-3 col-lg-6">
                         <button className="btn btn-primary" type="submit">
-                          <Link to="/books"> Save </Link>
+                          Save
                         </button>
                         <button className="btn btn-default" type="button">
-                          <Link to="/books">Cancel</Link>
+                          Cancel
                         </button>
                       </div>
                     </div>

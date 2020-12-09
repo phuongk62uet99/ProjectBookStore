@@ -1,14 +1,67 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import FetchHelper from "../common/fetch-helper";
 import "./ListBooks.css";
-
+import Book from "./Book";
 class ListBooks extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: [],
+      page_size: 10,
+    };
+  }
+
+  componentDidMount() {
+    var { page_size } = this.state;
+    FetchHelper.fetchData({
+      url: "http://localhost:1234/api/v1/book/books/",
+      method: "GET",
+    }).then(
+      (jsonData) => {
+        this.setState({
+          books: jsonData.data,
+        });
+      },
+      (err) => {
+        console.log("Err check : ", err);
+      }
+    );
+  }
+
+  apiUpdateData = () => {
+    var { page_size } = this.state;
+    FetchHelper.fetchData({
+      url: "http://localhost:1234/api/v1/book/books/",
+      method: "GET",
+    }).then(
+      (jsonData) => {
+        this.setState({
+          books: jsonData.data,
+        });
+      },
+      (err) => {
+        console.log("Err : ", err);
+      }
+    );
+  };
   render() {
+    var { books } = this.state;
+    var book = books.map((book, index) => {
+      return (
+        <Book
+          key={index}
+          index={index}
+          book={book}
+          apiUpdateData={this.apiUpdateData}
+        />
+      );
+    });
     return (
       <div className="table-agile-info">
         <div className="panel panel-default">
           <h4>Tất cae sách</h4>
-          <Link className="add-product" to="/bookAdd">
+          <Link className="add-product" to="/book-add">
             thêm sách
           </Link>
           <div>
@@ -43,305 +96,7 @@ class ListBooks extends Component {
                   </th>
                 </tr>
               </thead>
-              <tbody>
-                <tr data-breakpoints="xs">
-                  <td>1</td>
-                  <td>Anhr 01</td>
-                  <td>Lịch sử loài người </td>
-                  <td>
-                    <button className="pd-setting">Active</button>
-                  </td>
-                  <th>15</th>
-                  <td>Kiến thức chung</td>
-                  <td>150.000 VND</td>
-                  <td>175.000 VND</td>
-                  <td>
-                    <Link to="/bookEdit">
-                      <button
-                        data-toggle="tooltip"
-                        title="Edit"
-                        className="pd-setting-ed"
-                      >
-                        <i
-                          className="fa fa-pencil-square-o"
-                          aria-hidden="true"
-                        ></i>
-                      </button>
-                    </Link>
-                    <button
-                      data-toggle="tooltip"
-                      title="Trash"
-                      className="pd-setting-ed"
-                    >
-                      <i className="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr data-breakpoints="xs">
-                  <td>1</td>
-                  <td>Anhr 01</td>
-                  <td>Lịch sử loài người </td>
-                  <td>
-                    <button className="pd-setting">Active</button>
-                  </td>
-                  <th>15</th>
-                  <td>Kiến thức chung</td>
-                  <td>150.000 VND</td>
-                  <td>175.000 VND</td>
-                  <td>
-                    <Link to="/bookEdit">
-                      <button
-                        data-toggle="tooltip"
-                        title="Edit"
-                        className="pd-setting-ed"
-                      >
-                        <i
-                          className="fa fa-pencil-square-o"
-                          aria-hidden="true"
-                        ></i>
-                      </button>
-                    </Link>
-                    <button
-                      data-toggle="tooltip"
-                      title="Trash"
-                      className="pd-setting-ed"
-                    >
-                      <i className="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr data-breakpoints="xs">
-                  <td>1</td>
-                  <td>Anhr 01</td>
-                  <td>Lịch sử loài người </td>
-                  <td>
-                    <button className="pd-setting">Active</button>
-                  </td>
-                  <th>15</th>
-                  <td>Kiến thức chung</td>
-                  <td>150.000 VND</td>
-                  <td>175.000 VND</td>
-                  <td>
-                    <Link to="/bookEdit">
-                      <button
-                        data-toggle="tooltip"
-                        title="Edit"
-                        className="pd-setting-ed"
-                      >
-                        <i
-                          className="fa fa-pencil-square-o"
-                          aria-hidden="true"
-                        ></i>
-                      </button>
-                    </Link>
-                    <button
-                      data-toggle="tooltip"
-                      title="Trash"
-                      className="pd-setting-ed"
-                    >
-                      <i className="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr data-breakpoints="xs">
-                  <td>1</td>
-                  <td>Anhr 01</td>
-                  <td>Lịch sử loài người </td>
-                  <td>
-                    <button className="pd-setting">Active</button>
-                  </td>
-                  <th>15</th>
-                  <td>Kiến thức chung</td>
-                  <td>150.000 VND</td>
-                  <td>175.000 VND</td>
-                  <td>
-                    <Link to="/bookEdit">
-                      <button
-                        data-toggle="tooltip"
-                        title="Edit"
-                        className="pd-setting-ed"
-                      >
-                        <i
-                          className="fa fa-pencil-square-o"
-                          aria-hidden="true"
-                        ></i>
-                      </button>
-                    </Link>
-                    <button
-                      data-toggle="tooltip"
-                      title="Trash"
-                      className="pd-setting-ed"
-                    >
-                      <i className="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr data-breakpoints="xs">
-                  <td>1</td>
-                  <td>Anhr 01</td>
-                  <td>Lịch sử loài người </td>
-                  <td>
-                    <button className="pd-setting">Active</button>
-                  </td>
-                  <th>15</th>
-                  <td>Kiến thức chung</td>
-                  <td>150.000 VND</td>
-                  <td>175.000 VND</td>
-                  <td>
-                    <Link to="/bookEdit">
-                      <button
-                        data-toggle="tooltip"
-                        title="Edit"
-                        className="pd-setting-ed"
-                      >
-                        <i
-                          className="fa fa-pencil-square-o"
-                          aria-hidden="true"
-                        ></i>
-                      </button>
-                    </Link>
-                    <button
-                      data-toggle="tooltip"
-                      title="Trash"
-                      className="pd-setting-ed"
-                    >
-                      <i className="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr data-breakpoints="xs">
-                  <td>1</td>
-                  <td>Anhr 01</td>
-                  <td>Lịch sử loài người </td>
-                  <td>
-                    <button className="pd-setting">Active</button>
-                  </td>
-                  <th>15</th>
-                  <td>Kiến thức chung</td>
-                  <td>150.000 VND</td>
-                  <td>175.000 VND</td>
-                  <td>
-                    <Link to="/bookEdit">
-                      <button
-                        data-toggle="tooltip"
-                        title="Edit"
-                        className="pd-setting-ed"
-                      >
-                        <i
-                          className="fa fa-pencil-square-o"
-                          aria-hidden="true"
-                        ></i>
-                      </button>
-                    </Link>
-                    <button
-                      data-toggle="tooltip"
-                      title="Trash"
-                      className="pd-setting-ed"
-                    >
-                      <i className="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr data-breakpoints="xs">
-                  <td>1</td>
-                  <td>Anhr 01</td>
-                  <td>Lịch sử loài người </td>
-                  <td>
-                    <button className="pd-setting">Active</button>
-                  </td>
-                  <th>15</th>
-                  <td>Kiến thức chung</td>
-                  <td>150.000 VND</td>
-                  <td>175.000 VND</td>
-                  <td>
-                    <Link to="/bookEdit">
-                      <button
-                        data-toggle="tooltip"
-                        title="Edit"
-                        className="pd-setting-ed"
-                      >
-                        <i
-                          className="fa fa-pencil-square-o"
-                          aria-hidden="true"
-                        ></i>
-                      </button>
-                    </Link>
-                    <button
-                      data-toggle="tooltip"
-                      title="Trash"
-                      className="pd-setting-ed"
-                    >
-                      <i className="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr data-breakpoints="xs">
-                  <td>1</td>
-                  <td>Anhr 01</td>
-                  <td>Lịch sử loài người </td>
-                  <td>
-                    <button className="pd-setting">Active</button>
-                  </td>
-                  <th>15</th>
-                  <td>Kiến thức chung</td>
-                  <td>150.000 VND</td>
-                  <td>175.000 VND</td>
-                  <td>
-                    <Link to="/bookEdit">
-                      <button
-                        data-toggle="tooltip"
-                        title="Edit"
-                        className="pd-setting-ed"
-                      >
-                        <i
-                          className="fa fa-pencil-square-o"
-                          aria-hidden="true"
-                        ></i>
-                      </button>
-                    </Link>
-                    <button
-                      data-toggle="tooltip"
-                      title="Trash"
-                      className="pd-setting-ed"
-                    >
-                      <i className="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr data-breakpoints="xs">
-                  <td>1</td>
-                  <td>Anhr 01</td>
-                  <td>Lịch sử loài người </td>
-                  <td>
-                    <button className="pd-setting">Active</button>
-                  </td>
-                  <th>15</th>
-                  <td>Kiến thức chung</td>
-                  <td>150.000 VND</td>
-                  <td>175.000 VND</td>
-                  <td>
-                    <Link to="/bookEdit">
-                      <button
-                        data-toggle="tooltip"
-                        title="Edit"
-                        className="pd-setting-ed"
-                      >
-                        <i
-                          className="fa fa-pencil-square-o"
-                          aria-hidden="true"
-                        ></i>
-                      </button>
-                    </Link>
-                    <button
-                      data-toggle="tooltip"
-                      title="Trash"
-                      className="pd-setting-ed"
-                    >
-                      <i className="fa fa-trash-o" aria-hidden="true"></i>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody>{book}</tbody>
             </table>
           </div>
         </div>
